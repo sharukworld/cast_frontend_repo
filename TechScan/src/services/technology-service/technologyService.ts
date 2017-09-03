@@ -10,9 +10,7 @@ export class TechnologyService {
 
     getLanguageCount(searchQuery:string,languageName:string){
         let url = githubUrl.repositoriesSearch + '?q='+searchQuery+'language:'+languageName;
-        this.myHttpService.get(url).subscribe(res => {
-            console.error(res);
-        })
+        return this.myHttpService.get(url);
        
     }
 }

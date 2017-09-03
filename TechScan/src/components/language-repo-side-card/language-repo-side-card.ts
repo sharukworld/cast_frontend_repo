@@ -1,3 +1,4 @@
+import { TechnologyService } from '../../services/technology-service/technologyService';
 import { Language } from './model/language-model';
 
 import { Component, Input, OnInit } from '@angular/core';
@@ -9,11 +10,25 @@ import { MyHttpService } from "../../services/my-http-service/http.service";
 })
 export class LanguageRepoCountComponent implements OnInit {
 
-    constructor(private myHttpService:MyHttpService) { }
+    constructor(private myHttpService:MyHttpService, private technologyService: TechnologyService) { }
 
     ngOnInit() { 
 
     }
-    @Input() languageList:Array<Language>; 
+    @Input() languageList:Array<Language> =new Array<Language>(); 
+    @Input() searchString: string = '';
 
+    ngOnChanges(changes:any){
+        this.updateCount();
+    }
+    updateCount(){
+    this.languageList.forEach(language => {
+        this.technologyService.getLanguageCount(this.searchString,language.languageName).subscribe(
+            res => {
+                language.count = res.total_count;
+            }
+        );
+    });
+
+    }
 }
