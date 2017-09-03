@@ -1,3 +1,4 @@
+import { HeaderComponent } from '../components/header/header';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -5,11 +6,17 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomePage } from "../pages/home/home.page";
 import { appRoutes } from "./app.routes";
+import { FooterComponent } from "../components/footer/footer";
+import { TechnologyPageComponent } from "../pages/technologies/technology.page";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePage
+    HomePage,
+    HeaderComponent,  
+    FooterComponent,
+    TechnologyPageComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -21,3 +28,5 @@ import { appRoutes } from "./app.routes";
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//https://api.github.com/search/repositories?q=+language:java&sort=stars&order=desc
