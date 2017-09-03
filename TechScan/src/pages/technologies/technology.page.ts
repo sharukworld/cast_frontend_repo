@@ -14,7 +14,7 @@ export class TechnologyPageComponent implements OnInit {
 
     ngOnInit() { 
     this.languageList = TechnologyConstant.technologyList;
-    this.technologyService.getLanguageCount('','java');
+
     }
     languageList:Array<Language> = [];
 

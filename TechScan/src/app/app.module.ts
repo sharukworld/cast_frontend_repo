@@ -12,6 +12,9 @@ import { TechnologyPageComponent } from "../pages/technologies/technology.page";
 import { MyHttpService } from "../services/my-http-service/http.service";
 import { TechnologyService } from "../services/technology-service/technologyService";
 import { LanguageRepoCountComponent } from "../components/language-repo-side-card/language-repo-side-card";
+import { RepositoryListingComponent } from "../pages/repository-listing/repositorylisting-page";
+import {PaginatorModule} from 'primeng/primeng';
+import {TooltipModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { LanguageRepoCountComponent } from "../components/language-repo-side-car
     HeaderComponent,  
     FooterComponent,
     TechnologyPageComponent,
-    LanguageRepoCountComponent
+    LanguageRepoCountComponent,
+    RepositoryListingComponent
     
   ],
   imports: [
@@ -28,7 +32,9 @@ import { LanguageRepoCountComponent } from "../components/language-repo-side-car
     HttpModule,
       RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    PaginatorModule,
+    TooltipModule
   ],
   providers: [MyHttpService,TechnologyService],
   bootstrap: [AppComponent]

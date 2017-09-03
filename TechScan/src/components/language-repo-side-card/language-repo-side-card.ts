@@ -23,7 +23,7 @@ export class LanguageRepoCountComponent implements OnInit {
     }
     updateCount(){
     this.languageList.forEach(language => {
-        this.technologyService.getLanguageCount(this.searchString,language.languageName).subscribe(
+        this.technologyService.getLanguageRepo(this.searchString,language.languageName,1,1).subscribe(
             res => {
                 language.count = res.total_count;
             }

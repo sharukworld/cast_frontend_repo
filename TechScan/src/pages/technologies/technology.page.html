@@ -1,7 +1,7 @@
 <div class="technology-wrapper">
     <div class="row">
         <div class='col-sm-12 col-md-8'>
-            <div class="grid-container card" *ngFor="let language of languageList ">
+            <div class="grid-container card" *ngFor="let language of languageList " [routerLink]="['/technology/repositorylist', language.languageName]">
                 <div class="image-container display-center">
                     <img class="image-logo" [src]='language.logoAddress' />
                 </div>
@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class='col-md-4 hidden-sm'>
+        <div class='col-md-4 hidden-md-down'>
             <div class="fixed-grid-contaier">
            <cast-card-language-count-list [languageList] = 'languageList'></cast-card-language-count-list>
             </div>
