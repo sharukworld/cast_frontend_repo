@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { TechnologyService } from "../../services/technology-service/technologyService";
 import { TechnologyConstant } from "../../constant/technology-constant";
+import { SharedService } from "../../services/share-service/share.servie";
 
 
 @Component({
@@ -13,12 +14,12 @@ import { TechnologyConstant } from "../../constant/technology-constant";
 })
 export class RepositoryListingComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private technologyService: TechnologyService) { }
+    constructor(private route: ActivatedRoute, private technologyService: TechnologyService,  private sharedService: SharedService) { }
     private sub: any;
     languageName: string = '';
     pageNumber = 1;
     numberPerPage = 9;
-    searchQuery = '';
+    searchString = '';
     repoList = {
         total_count : 0,
         items : new Array<Repository>(),
@@ -29,16 +30,19 @@ export class RepositoryListingComponent implements OnInit {
             this.languageName = params['name'];
             this.getRepoList();
         });
+         this.sharedService.getSearchQuery().subscribe(
+        data => {this.searchString = data;
+        this.getRepoList();}
+      );
     }
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
 
     getRepoList() {
-        this.technologyService.getLanguageRepo(this.searchQuery, this.languageName, this.pageNumber, this.numberPerPage).subscribe(
+        this.technologyService.getLanguageRepo(this.searchString, this.languageName, this.pageNumber, this.numberPerPage).subscribe(
             res => {
                 this.repoList = res;
-                console.error(res)
             }
 
         )
@@ -46,6 +50,9 @@ export class RepositoryListingComponent implements OnInit {
     paginate(event){
         this.pageNumber = event.page+1;
         this.getRepoList();
+    }
+    download(url:string){
+     this.technologyService.download(url);
     }
   languageList:Array<Language> = TechnologyConstant.technologyList;
 }

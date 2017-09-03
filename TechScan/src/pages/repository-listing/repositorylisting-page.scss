@@ -15,9 +15,12 @@
 
     .heading { 
     color: #4169E1;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 600;
+    font-weight: 200;
     text-transform: uppercase;
+    font-family: times, Times New Roman, times-roman, georgia, serif;
+    font-size: 21px;
+    line-height: 40px;
+    letter-spacing: -1px;
      }
 .display-center{
     display: flex;
@@ -34,3 +37,11 @@
     text-transform: uppercase;
     color: #444;
     }
+.repository-listing-wrapper{
+     padding: 50px;
+background: #D3CCE3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}

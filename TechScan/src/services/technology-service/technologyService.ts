@@ -12,8 +12,16 @@ export class TechnologyService {
     constructor(private myHttpService:MyHttpService) { }
 
     getLanguageRepo(searchQuery:string,languageName:string,pageNumber,repoPerPage){
-        let url = githubUrl.repositoriesSearch + '?q='+searchQuery+'language:'+languageName + '&page='+pageNumber+'&per_page='+repoPerPage + '&client_id='+this.clientId+'&client_secret='+this.clientSecret;
+        if(searchQuery !== ''){
+          searchQuery = searchQuery+'&';
+        }
+        let url = githubUrl.repositoriesSearch + '?q='+searchQuery+'language:'+languageName + '&page='+pageNumber+'&per_page='+repoPerPage + '&sort=stars&order=desc' + '&client_id='+this.clientId+'&client_secret='+this.clientSecret;
         return this.myHttpService.get(url);
        
+    }
+    download(url:string){
+     this.myHttpService.get(url).subscribe(res => {
+         window.open(res[0].zipball_url);
+     })
     }
 }

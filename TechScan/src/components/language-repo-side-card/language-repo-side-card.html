@@ -1,12 +1,12 @@
-         <table class="table table-striped">
-                    <thead class="thead-inverse">
+         <table class="table table-striped table-inverse">
+                    <thead class="">
                         <tr>
                             <th>Languages</th>
                             <th>Repository</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor = "let language of languageList">
+                        <tr *ngFor = "let language of languageList" class = "pointer-cursor" [class.selected] = "language.languageName === selectedLanguage" [routerLink]="['/technology/repositorylist', language.languageName]">
                             <th scope="row">{{language.languageName}}</th>
                             <td>{{language.count}}</td>
                         </tr>

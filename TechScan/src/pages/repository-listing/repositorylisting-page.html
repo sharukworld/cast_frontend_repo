@@ -1,6 +1,10 @@
 
-<div class= "repository-listing-cointainer">
+<div class= "repository-listing-wrapper">
+    <div class="alert alert-info padding-margin-10" role="alert">
+            <strong>{{repoList.total_count}}</strong> repository results <span *ngIf= "searchString !== ''">for </span> <strong>{{searchString}}</strong>
+            </div>
      <div class="row">
+         
         <div class='col-sm-12 col-md-8'>
              <div class="grid-container card" *ngFor = "let item of repoList.items">
                  <div class = "name padding-margin-10">
@@ -15,13 +19,13 @@
                    <i class="fa fa-star" aria-hidden="true"></i>{{item.stargazers_count}}
                 </div>
                 <div class ="display-center">
-                    <i class="fa fa-download cursor-pointer" aria-hidden="true" pTooltip="Download" tooltipPosition="top"></i>
+                    <i class="fa fa-download cursor-pointer" aria-hidden="true" pTooltip="Download" tooltipPosition="top" (click) = "download(item.tags_url)"></i>
                 </div>
             </div>
         </div>
         <div class='col-md-4 hidden-md-down'>
             <div class="fixed-grid-contaier">
-           <cast-card-language-count-list [languageList] = 'languageList'></cast-card-language-count-list>
+           <cast-card-language-count-list [searchString] = 'searchString'  [languageList] = 'languageList'></cast-card-language-count-list>
             </div>
         </div>
     </div>

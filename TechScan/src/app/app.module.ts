@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HeaderComponent } from '../components/header/header';
 import { RouterModule } from '@angular/router';
@@ -15,6 +16,7 @@ import { LanguageRepoCountComponent } from "../components/language-repo-side-car
 import { RepositoryListingComponent } from "../pages/repository-listing/repositorylisting-page";
 import {PaginatorModule} from 'primeng/primeng';
 import {TooltipModule} from 'primeng/primeng';
+import { SharedService } from "../services/share-service/share.servie";
 
 @NgModule({
   declarations: [
@@ -34,9 +36,10 @@ import {TooltipModule} from 'primeng/primeng';
       appRoutes
     ),
     PaginatorModule,
-    TooltipModule
+    TooltipModule,
+    FormsModule
   ],
-  providers: [MyHttpService,TechnologyService],
+  providers: [MyHttpService,TechnologyService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
