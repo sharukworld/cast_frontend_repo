@@ -1,20 +1,19 @@
-<div class="row">
- <div class = 'col-sm-12 col-md-8'>
-     <!-- <div class="card">
-       <img class="card-img-top img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Jacqueline_Fernandez%281%29.jpg/220px-Jacqueline_Fernandez%281%29.jpg" alt="">
-       <div class="card-block text-xs-left">
-         <h4 class="card-title">Title</h4>
-         <p class="card-text">Body</p>
-       </div>
-     </div> -->
-    <div class="card card-inverse card-primary">
-      <img class="card-img-top img-fluid" src="holder.js/100%x180/" alt="">
-      <div class="card-block">
-        <h4 class="card-title">Title</h4>
-        <p class="card-text">Text</p>
-      </div>
+<div class="technology-wrapper">
+    <div class="row">
+        <div class='col-sm-12 col-md-8'>
+            <div class="grid-container card" *ngFor="let language of languageList ">
+                <div class="image-container display-center">
+                    <img class="image-logo" [src]='language.logoAddress' />
+                </div>
+                <div class="display-center">
+                    {{language.languageName}}
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 hidden-sm'>
+            <div class="fixed-grid-contaier">
+           <cast-card-language-count-list [languageList] = 'languageList'></cast-card-language-count-list>
+            </div>
+        </div>
     </div>
- </div>
- <div class = 'col-md-4 hidden-sm'>
- </div>
 </div>

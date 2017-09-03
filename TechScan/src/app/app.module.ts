@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { HeaderComponent } from '../components/header/header';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,6 +9,9 @@ import { HomePage } from "../pages/home/home.page";
 import { appRoutes } from "./app.routes";
 import { FooterComponent } from "../components/footer/footer";
 import { TechnologyPageComponent } from "../pages/technologies/technology.page";
+import { MyHttpService } from "../services/my-http-service/http.service";
+import { TechnologyService } from "../services/technology-service/technologyService";
+import { LanguageRepoCountComponent } from "../components/language-repo-side-card/language-repo-side-card";
 
 @NgModule({
   declarations: [
@@ -15,16 +19,18 @@ import { TechnologyPageComponent } from "../pages/technologies/technology.page";
     HomePage,
     HeaderComponent,  
     FooterComponent,
-    TechnologyPageComponent
+    TechnologyPageComponent,
+    LanguageRepoCountComponent
     
   ],
   imports: [
     BrowserModule,
+    HttpModule,
       RouterModule.forRoot(
       appRoutes
     )
   ],
-  providers: [],
+  providers: [MyHttpService,TechnologyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

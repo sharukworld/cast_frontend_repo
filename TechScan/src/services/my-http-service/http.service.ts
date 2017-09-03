@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class myHttpService {
+export class MyHttpService {
     
     constructor(private http: Http) { }
 
